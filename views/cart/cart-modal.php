@@ -1,6 +1,5 @@
 <?php if (!empty($session)) : ?>
     <div class="table-responsive">
-        <!--<div class="table table-hover table-striped">-->
             <table class="table table-hover table-striped">
                 <thead>
                     <tr>
@@ -36,7 +35,6 @@
                     </tr>
                 </tbody>
             </table>
-        <!--</div>-->
     </div>
 <?php else: ?>
     <h2>Корзина пуста!</h2>

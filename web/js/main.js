@@ -37,6 +37,24 @@ function showCart(cart) {
 	$('#cart').modal();
 }
 
+function clearCart() {
+    $.ajax({
+        url: '/cart/clear',
+        type: 'GET',
+        success: function(res){
+            if (!res) alert('Error 10');
+			showCart(res);
+        },
+        error: function () {
+            alert ('Error ');
+            console.log(res);
+        }
+
+    });
+}
+
+
+
 $('.add-to-cart').on('click', function (e) {
 		e.preventDefault();
 		var id = $(this).data('id');
@@ -46,7 +64,6 @@ $('.add-to-cart').on('click', function (e) {
 			type: 'GET',
 			success: function(res){
 				if (!res) alert('Error 10');
-				// console.log(res);
 				showCart(res);
 			},
 			error: function () {

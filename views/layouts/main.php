@@ -11,6 +11,7 @@ use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use app\assets\ltAppAsset;
 use yii\helpers\Url;
+use yii\bootstrap\Modal;
 
 AppAsset::register($this);
 ltAppAsset::register($this);
@@ -317,6 +318,16 @@ ltAppAsset::register($this);
     </div>
 
 </footer><!--/Footer-->
+
+<?php Modal::begin([
+    'header' => '<h2>Корзина</h2>',
+    'id' => 'cart',
+    'footer' => '<button type="button" class="btn btn-default" data-dismiss="modal">Продолжить покупки</button>
+        <button type="button" class="btn btn-primary">Оформить заказ</button>',
+]);
+
+Modal::end();
+?>
 <?php $this->endBody() ?>
 </body>
 </html>

@@ -32,6 +32,11 @@ $(document).ready(function(){
 });
 /*Add to cart*/
 
+function showCart(cart) {
+	$('#cart .modal-body').html(cart);
+	$('#cart').modal();
+}
+
 $('.add-to-cart').on('click', function (e) {
 		e.preventDefault();
 		var id = $(this).data('id');
@@ -41,8 +46,8 @@ $('.add-to-cart').on('click', function (e) {
 			type: 'GET',
 			success: function(res){
 				if (!res) alert('Error 10');
-				console.log(res);
-				/*showCart(){};*/
+				// console.log(res);
+				showCart(res);
 			},
 			error: function () {
 				alert ('Error');

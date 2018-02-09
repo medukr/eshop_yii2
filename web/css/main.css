@@ -584,6 +584,9 @@ ul.sub-menu {
   padding-left: 100px;
 }
 
+.del-item{
+  cursor: pointer;
+}
 
 .pricing {
   position: absolute;

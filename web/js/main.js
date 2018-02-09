@@ -73,3 +73,20 @@ $('.add-to-cart').on('click', function (e) {
 		});
     });
 
+$('#cart .modal-body').on('click', '.del-item', function () {
+	var id = $(this).data('id');
+    $.ajax({
+        url: '/cart/del-item',
+        data: {id:id},
+        type: 'GET',
+        success: function(res){
+            if (!res) alert('Error->.del-item->Ajax:success');
+            showCart(res);
+        },
+        error: function () {
+            alert ('Error->.del-item->Ajax:error');
+        }
+
+    });
+});
+

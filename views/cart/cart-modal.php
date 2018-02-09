@@ -1,4 +1,4 @@
-<?php if (!empty($session)) : ?>
+<?php if (isset($session['cart'])) : ?>
     <div class="table-responsive">
             <table class="table table-hover table-striped">
                 <thead>
@@ -36,7 +36,6 @@
                 </tbody>
             </table>
     </div>
-<?php else: ?>
-    <h2>Корзина пуста!</h2>
+    <?php else: ?>
+    <h2>Корзина пуста</h2>
 <?php endif; ?>
-

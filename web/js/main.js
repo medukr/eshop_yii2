@@ -42,11 +42,11 @@ function clearCart() {
         url: '/cart/clear',
         type: 'GET',
         success: function(res){
-            if (!res) alert('Error 10');
+            if (!res) alert('Error->clearCart()->Ajax:success');
 			showCart(res);
         },
         error: function () {
-            alert ('Error ');
+            alert ('Error->clearCart()->Ajax:error');
             console.log(res);
         }
 
@@ -63,11 +63,11 @@ $('.add-to-cart').on('click', function (e) {
 			data: {id:id},
 			type: 'GET',
 			success: function(res){
-				if (!res) alert('Error 10');
+				if (!res) alert('Error->.add-to-cart->Ajax:success');
 				showCart(res);
 			},
 			error: function () {
-				alert ('Error');
+				alert ('Error->.add-to-cart->Ajax:error');
             }
 
 		});

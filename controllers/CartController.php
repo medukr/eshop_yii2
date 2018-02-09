@@ -30,6 +30,8 @@ class CartController extends AppController{
     {
         $session = Yii::$app->session;
         $session->open();
+        $session->remove('cart.qty');
+        $session->remove('cart.sum');
         $session->remove('cart');
         $this->layout = false;
         return $this->render('cart-modal', compact('session'));

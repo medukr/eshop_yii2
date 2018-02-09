@@ -24,7 +24,24 @@ class Cart extends ActiveRecord {
                 'price' => $product->price,
                 'img' => $product->img
             ];
+        };
+
+        if (isset($_SESSION['cart.qty'])){
+            $_SESSION['cart.qty'] += $qty;
+        }else{
+            $_SESSION['cart.qty'] = $qty;
         }
+
+        if (isset($_SESSION['cart.sum'])) {
+            $_SESSION['cart.sum'] += $qty * $product->price;
+        }else{
+            $_SESSION['cart.sum'] = $qty * $product->price;
+        }
+
+//        $_SESSION['cart.qty'] =+ $_SESSION['cart.qty'] + $qty ?? $qty;
+//        $_SESSION['cart.qty'] +=  $_SESSION['cart.qty'] + $qty ?? $qty;
+
+
 //        $_SESSION['cart.qty'] = isset( $_SESSION['cart.qty']) ?  $_SESSION['cart.qty'] + $qty : $qty;
 //        $_SESSION['cart.sum'] = isset( $_SESSION['cart.sum']) ?  $_SESSION['cart.sum'] + $qty * $product->price : $qty * $product->price;
 

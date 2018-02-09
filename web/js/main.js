@@ -90,3 +90,18 @@ $('#cart .modal-body').on('click', '.del-item', function () {
     });
 });
 
+function getCart() {
+    $.ajax({
+        url: '/cart/show',
+        type: 'GET',
+        success: function(res){
+            if (!res) alert('Error->getCart()->Ajax:success');
+            showCart(res);
+        },
+        error: function () {
+            alert ('Error->getCart()->Ajax:error');
+        }
+    });
+    return false;
+}
+

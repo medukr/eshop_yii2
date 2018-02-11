@@ -103,7 +103,7 @@ ltAppAsset::register($this);
                             <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
                             <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                             <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                            <li><a href="#" onclick="return getCart()"><i class="fa fa-shopping-cart" ></i> Cart</a></li>
+                            <li><a href="#" onclick="return getCart()" ><i class="fa fa-shopping-cart " ></i> Cart</a></li>
                             <li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
                         </ul>
                     </div>
@@ -167,7 +167,7 @@ ltAppAsset::register($this);
             <div class="row">
                 <div class="col-sm-2">
                     <div class="companyinfo">
-                        <h2><span>e</span>-shopper</h2>
+                        <h2><span style="color: red; font-size: 48px">4</span>servise</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor</p>
                     </div>
                 </div>
@@ -318,19 +318,20 @@ ltAppAsset::register($this);
     </div>
 
 </footer><!--/Footer-->
-
+<!--Model Cart-->
 <?php Modal::begin([
     'header' => '<h2>Корзина</h2>',
     'id' => 'cart',
     'size' => 'modal-lg',
     'footer' => '<button type="button" class="btn btn-default" data-dismiss="modal">Продолжить покупки</button>
-        <button type="button" class="btn btn-success">Оформить заказ</button>
+        <a href="'.Url::to(['cart/view']).'" class="btn btn-success">Оформить заказ</a>
         <button type="button" class="btn btn-danger" onclick="clearCart()">Очистить корзину</button>',
 ]);
 
 Modal::end();
-?>
+?><!--/Modal cart-->
 <?php $this->endBody() ?>
 </body>
 </html>
 <?php $this->endPage() ?>
+

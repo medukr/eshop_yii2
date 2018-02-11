@@ -22,7 +22,8 @@ class Cart extends ActiveRecord {
                 'qty' => $qty,
                 'name' => $product->name,
                 'price' => $product->price,
-                'img' => $product->img
+                'img' => $product->img,
+                'id' => $product->id,
             ];
         };
 

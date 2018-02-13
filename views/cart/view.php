@@ -1,3 +1,4 @@
+
 <?php
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -56,3 +57,4 @@ use yii\widgets\ActiveForm;
     <h2>Корзина пуста</h2>
 <?php endif; ?>
 </div>
+

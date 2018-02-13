@@ -77,11 +77,13 @@ class CartController extends AppController{
     {
         $session = Yii::$app->session;
         $session->open();
+
         $this->setMeta('Корзина');
         $order = new Order();
         if ($order->load(Yii::$app->request->post())){
             debug(Yii::$app->request->post());
         }
         return $this->render('view', compact('session','order'));
+
     }
 }

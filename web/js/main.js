@@ -91,6 +91,18 @@ $('#cart .modal-body').on('click', '.del-item', function () {
     });
 });
 
+$('.del-item').on('click', function () {
+    var id = $(this).data('id');
+    $.ajax({
+        url: '/cart/del-item',
+        data: {id:id},
+        type: 'GET',
+        error: function () {
+            alert ('Error->.del-item()->Ajax:error');
+        }
+    });
+});
+
 function getCart() {
     $.ajax({
         url: '/cart/show',

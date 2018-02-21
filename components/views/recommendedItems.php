@@ -22,7 +22,7 @@ use yii\helpers\Url;
                                 <a href="<?= Url::to(['product/view','id' => $hit->id])?>">
                                     <p><?= $hit->name?></p>
                                 </a>
-                                <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                <button type="button" class="btn btn-default add-to-cart" data-id="<?= $hit->id?>"><i class="fa fa-shopping-cart"></i>Add to cart</button>
                             </div>
                         </div>
                     </div>

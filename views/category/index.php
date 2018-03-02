@@ -117,7 +117,6 @@ use yii\helpers\Url;
 
                 <div class="features_items"><!--features_items-->
                     <h2 class="title text-center">Features Items</h2>
-                    <? debug(Yii::$app->user->identity)?>
                     <?php foreach ($hits as $hit): ?>
 
                     <div class="col-sm-4">

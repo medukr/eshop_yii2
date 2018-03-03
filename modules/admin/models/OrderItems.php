@@ -1,9 +1,9 @@
 <?php
 
-namespace app\models;
+namespace app\modules\admin\models;
 
+use app\models\Product;
 use Yii;
-use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "order_items".
@@ -16,7 +16,7 @@ use yii\db\ActiveRecord;
  * @property int $qty_item
  * @property double $sum_item
  */
-class OrderItems extends ActiveRecord
+class OrderItems extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
@@ -29,6 +29,11 @@ class OrderItems extends ActiveRecord
     public function getOrder()
     {
         return $this->hasOne(Order::className(), ['id' => 'order_id']);
+    }
+
+    public function getProduct()
+    {
+        return $this->hasOne(Product::className(), ['id' => 'product_id']);
     }
 
     /**

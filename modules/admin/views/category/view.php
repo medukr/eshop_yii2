@@ -24,12 +24,16 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
-            'parent_id',
+//            'parent_id',
+            [
+                'attribute' => 'parent_id',
+                'value' => $model->category->name,
+                'format' => 'html',
+            ],
             'name',
             'keywords',
             'description',

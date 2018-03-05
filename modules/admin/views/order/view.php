@@ -63,8 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php foreach ($items as $item): ?>
             <tr>
                <td class="cart_product" style="margin-left: 0">
-                   <?php $product = $item->product;?>
-                    <a href="<?= Url::to(["/product/view", 'id' => $item->product_id])?>"><?= Html::img("@web/images/products/{$product['img']}", ['alt' => $item['name'], 'style' => 'width: 75px'])?></a>
+                    <a href="<?= Url::to(["/product/view", 'id' => $item->product_id])?>"><?= Html::img("@web/images/products/{$item->product['img']}", ['alt' => $item['name'], 'style' => 'width: 75px'])?></a>
                 </td>
                 <td class="cart_description">
                     <h4><a href="<?= Url::to(["/product/view", 'id' => $item->product_id])?>"><?= $item['name']?></a></h4>

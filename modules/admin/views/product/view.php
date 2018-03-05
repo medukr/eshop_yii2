@@ -4,13 +4,12 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\admin\models\Category */
+/* @var $model app\modules\admin\models\Product */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Categories', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
 <?php if (Yii::$app->session->hasFlash('success')) : ?>
     <div class="alert alert-success alert-dismissible" role="alert">
         <strong><?php echo Yii::$app->session->getFlash('success');?></strong>
@@ -19,8 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </button>
     </div>
 <?php endif; ?>
-
-<div class="category-view">
+<div class="product-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -34,19 +32,21 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
+
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
-//            'parent_id',
-            [
-                'attribute' => 'parent_id',
-                'value' => $model->category ? $model->category->name : 'Нет категории',
-                'format' => 'html',
-            ],
+            'category_id',
             'name',
+            'content:ntext',
+            'price',
             'keywords',
             'description',
+            'img',
+            'hit',
+            'new',
+            'sale',
         ],
     ]) ?>
 

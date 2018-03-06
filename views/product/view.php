@@ -105,8 +105,11 @@ use yii\helpers\Url;
                             <p><b>Condition:</b> New</p>
                             <p><b>Brand:</b><a href="<?= Url::to(["category/{$product->category->id}"],['id' => $product->category->id])?>"><?= $product->category->name?></a></p>
                             <a href=""><img src="/images/product-details/share.png" class="share img-responsive"  alt="" /></a>
+
                         </div><!--/product-information-->
+
                     </div>
+                    <?= $product->content?>
                 </div><!--/product-details-->
 
                 <!--category-tab-->

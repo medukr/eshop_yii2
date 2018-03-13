@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\RegisterForm;
+use app\models\User;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -21,12 +22,17 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'only' => ['logout', 'register', 'login'],
                 'rules' => [
                     [
                         'actions' => ['logout'],
                         'allow' => true,
                         'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['login', 'register'],
+                        'allow' => true,
+                        'roles' => ['?'],
                     ],
                 ],
             ],
@@ -91,18 +97,12 @@ class SiteController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
                if ($user = $model->registerUser()){
-                   if (Yii::$app->getUser()->login($user)){
-                       return $this->goHome();
-                   }
+                   return $this->goBack();
                }
         }
 
-        return $this->render('register', [
-            'model' => $model,
-        ]);
+        return $this->render('register', ['model' => $model,]);
 
-        /*$model = new User();
-        return $this->render('register', ['model' => $model]);*/
     }
 
 
@@ -145,4 +145,5 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
 }

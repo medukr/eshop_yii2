@@ -5,11 +5,26 @@ namespace app\models;
 use yii\db\ActiveRecord;
 use Yii;
 
+/**
+ * This is the model class for table "user".
+ *
+ * @property int $id
+ * @property string $username
+ * @property string $password
+ * @property string $auth_key
+ * @property string $email
+ * @property string $name
+ * @property string $address
+ * @property int $phone
+ * @property string $create_at
+ * @property string $update_at
+ */
+
 class User extends ActiveRecord implements \yii\web\IdentityInterface
 {
 
     public static function tableName(){
-       return 'user';
+       return '{{%user}}';
     }
     /**
      * @inheritdoc
@@ -80,5 +95,9 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     public function generateAuthKey()
     {
         $this->auth_key = Yii::$app->security->generateRandomString();
+    }
+
+    public function setPassword($password){
+        $this->password = Yii::$app->security->generatePasswordHash($password);
     }
 }

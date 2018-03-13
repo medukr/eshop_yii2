@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\RegisterForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -85,7 +86,23 @@ class SiteController extends Controller
     }
 
     public function actionRegister(){
-        return $this->render('register');
+
+        $model = new RegisterForm();
+
+        if ($model->load(Yii::$app->request->post())) {
+               if ($user = $model->registerUser()){
+                   if (Yii::$app->getUser()->login($user)){
+                       return $this->goHome();
+                   }
+               }
+        }
+
+        return $this->render('register', [
+            'model' => $model,
+        ]);
+
+        /*$model = new User();
+        return $this->render('register', ['model' => $model]);*/
     }
 
 

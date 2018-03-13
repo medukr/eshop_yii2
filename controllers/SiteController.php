@@ -84,6 +84,11 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionRegister(){
+        return $this->render('register');
+    }
+
+
     /**
      * Logout action.
      *

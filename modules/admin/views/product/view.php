@@ -19,6 +19,8 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 <?php endif; ?>
 <div class="product-view">
+    <?php $image = $model->getImage() ?>
+
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -43,7 +45,23 @@ $this->params['breadcrumbs'][] = $this->title;
             'price',
             'keywords',
             'description',
-            'img',
+            [
+                'attribute' => 'image',
+                'value' => "<img src=\"{$image->getUrl()}\" alt=\"\">",
+                'format' => 'html',
+            ],
+            [
+                'attribute' =>  'gallery',
+                'value' => function($model){
+                    $images = $model->getImages();
+                    $gallery = '';
+                    foreach ($images as $img) {
+                        $gallery .= "<img src=\"{$img->getUrl()}\" alt=\"\" width='150px'>";
+                    }
+                    return $gallery;
+                },
+                'format' => 'html',
+            ],
             'hit',
             'new',
             'sale',

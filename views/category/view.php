@@ -58,11 +58,12 @@ use yii\helpers\Url;
 
                     <?php $i = 0; if (!empty($products)):?>
                         <?php foreach ($products as $product) :?>
+                            <?php $mainImg = $product->getImage(); ?>
                     <div class="col-sm-4">
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
-                                    <a href="<?= Url::to(['product/view','id' => $product->id])?>"><?= Html::img("@web/images/products/{$product->img}", ['alt' => $product->name])?></a>
+                                    <a href="<?= Url::to(['product/view','id' => $product->id])?>"><?= Html::img("{$mainImg->getUrl()}", ['alt' => $product->name])?></a>
                                     <h2>$<?= $product->price ?></h2>
                                     <p><a href="<?= Url::to(['product/view','id' => $product->id])?>"><?= $product->name ?></a></p>
                                     <a href="#" class="btn btn-default add-to-cart" data-id="<?= $product->id?>"><i class="fa fa-shopping-cart"></i>Add to cart</a>

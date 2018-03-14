@@ -68,6 +68,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+
+
         return $this->render('index');
     }
 
@@ -78,14 +80,20 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
 
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->login()) {
+            if (Yii::$app->user->identity['isAdmin'] === 1) {
+                return $this->redirect('/admin');
+            }else{
+                return $this->redirect('/user');
+            }
         }
+
         return $this->render('login', [
             'model' => $model,
         ]);

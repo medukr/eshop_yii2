@@ -15,6 +15,9 @@ $config = [
             'layout' => 'admin',
             'defaultRoute' => 'order/index',
         ],
+        'user' => [
+            'class' => 'app\modules\user\Module',
+        ],
         'yii2images' => [
             'class' => 'rico\yii2images\Module',
             //be sure, that permissions ok

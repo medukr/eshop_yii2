@@ -41,6 +41,7 @@ class OrderController extends AppAdminController
      */
     public function actionIndex()
     {
+
         $dataProvider = new ActiveDataProvider([
             'query' => Order::find(),
             'pagination' => [

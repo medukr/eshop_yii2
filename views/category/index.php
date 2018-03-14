@@ -6,7 +6,7 @@ use yii\helpers\Url;
 ?>
 
 <section id="slider"><!--slider-->
-    <div class="container">
+    <!--<div class="container">
         <div class="row">
             <div class="col-sm-12">
                 <div id="slider-carousel" class="carousel slide" data-ride="carousel">
@@ -67,7 +67,7 @@ use yii\helpers\Url;
 
             </div>
         </div>
-    </div>
+    </div>-->
 </section><!--/slider-->
 
 <section>

@@ -9,6 +9,7 @@ use Yii;
  * This is the model class for table "user".
  *
  * @property int $id
+ * @property int $isAdmin;
  * @property string $username
  * @property string $password
  * @property string $auth_key
@@ -62,6 +63,11 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getIsAdmin()
+    {
+        return $this->isAdmin;
     }
 
     /**

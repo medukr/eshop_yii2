@@ -2,7 +2,8 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=yii2_loc;unix_socket=/opt/lampp/var/mysql/mysql.sock',
+//    'dsn' => 'mysql:host=localhost;dbname=yii2_loc;unix_socket=/opt/lampp/var/mysql/mysql.sock',
+    'dsn' => 'mysql:host=localhost;dbname=yii2_loc',
     'username' => 'root',
     'password' => 'root',
     'charset' => 'utf8',

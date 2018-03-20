@@ -148,6 +148,12 @@ ltAppAsset::register($this);
                                     <li><a href="<?= Url::to(['product/create'])?>">Добавить товар</a></li>
                                 </ul>
                             </li>
+                            <li class="dropdown"><a href="#">Пользователи<i class="fa fa-angle-down"></i></a>
+                                <ul role="menu" class="sub-menu">
+                                    <li><a href="<?= Url::to(['users/index'])?>">Список пользователей</a></li>
+                                    <li><a href="<?= Url::to(['users/create'])?>">Добавить пользователя</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>

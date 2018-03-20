@@ -59,7 +59,7 @@ $config = [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'smtp.gmail.com',
                 'username' => 'andrii.demydyuk@gmail.com',
-                'password' => 'MEDyu4ok74529',
+                'password' => 'qwe123',
                 'port' => '465 ',
                 'encryption' => 'ssl',
             ],

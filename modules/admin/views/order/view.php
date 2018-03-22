@@ -7,8 +7,12 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\modules\admin\models\Order */
 
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Orders', 'url' => ['index']];
+$this->title = 'Заказ №' . $model->id;
+$this->params['breadcrumbs'][] = [
+        'label' => 'Заказы',
+        'url' => ['index'],
+    'class' => 'breadcrumb'
+    ];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="order-view">
@@ -32,7 +36,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'created_at',
             'updated_at',
-            'qty',
+            [
+                    'attribute' => 'qty',
+                    'label' => 'Кол-тво товаров',
+            ],
             'sum',
             [
                 'attribute' => 'status',

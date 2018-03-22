@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
+$this->title = 'Корзина';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <section id="cart_items">
     <div class="container">

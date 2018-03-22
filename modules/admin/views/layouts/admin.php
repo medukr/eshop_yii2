@@ -107,6 +107,7 @@ ltAppAsset::register($this);
                                 <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                                 <li><a href="#" onclick="return getCart()" ><i class="fa fa-shopping-cart " ></i> Cart</a></li>
                                 <li><a href="<?= Url::to('/site/logout')?>"><i class="fa fa-lock"></i> Выход</a></li>
+
                             <?php else: ?>
                                 <li><a href="<?= Url::to('/admin')?>"><i class="fa fa-user"></i>Гость</a></li>
                                 <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
@@ -135,7 +136,13 @@ ltAppAsset::register($this);
                     </div>
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
-                            <li><a href="<?= Url::home()?>" class="active">Home</a></li>
+                            <li><a href="<?= Url::home()?>" class="active">На главную</a></li>
+                            <li class="dropdown"><a href="#">Заказы<i class="fa fa-angle-down"></i></a>
+                                <ul role="menu" class="sub-menu">
+                                    <li><a href="<?= Url::to(['order/index'])?>">Список заказов</a></li>
+                                    <li><a href="<?= Url::to(['order/create'])?>">Добавить заказ</a></li>
+                                </ul>
+                            </li>
                             <li class="dropdown"><a href="#">Категории<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     <li><a href="<?= Url::to(['category/index'])?>">Список категорий</a></li>
@@ -150,13 +157,14 @@ ltAppAsset::register($this);
                             </li>
                             <li class="dropdown"><a href="#">Пользователи<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
-                                    <li><a href="<?= Url::to(['users/index'])?>">Список пользователей</a></li>
-                                    <li><a href="<?= Url::to(['users/create'])?>">Добавить пользователя</a></li>
+                                    <li><a href="<?= Url::to(['user/index'])?>">Список пользователей</a></li>
+                                    <li><a href="<?= Url::to(['user/create'])?>">Добавить пользователя</a></li>
                                 </ul>
                             </li>
                         </ul>
-                    </div>
+                        </div>
                 </div>
+
                 <div class="col-sm-3">
                     <div class="search_box pull-right">
                         <form method="get" action="<?= Url::to(['category/search'])?>">
@@ -165,10 +173,20 @@ ltAppAsset::register($this);
                     </div>
                 </div>
             </div>
+            <div class="breadcrumbs">
+                <ol class="breadcrumb">
+                    <?= Breadcrumbs::widget(
+                        [
+                            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                        ]);?>
+                </ol>
+            </div>
         </div>
     </div><!--/header-bottom-->
 </header><!--/header-->
+
 <div class="container">
+
 
 <?= $content; ?>
 
@@ -331,6 +349,18 @@ ltAppAsset::register($this);
 
 </footer><!--/Footer-->
 
+<!--Model Cart-->
+<?php Modal::begin([
+    'header' => '<h2>Корзина</h2>',
+    'id' => 'cart',
+    'size' => 'modal-lg',
+    'footer' => '<button type="button" class="btn btn-default" data-dismiss="modal">Продолжить покупки</button>
+        <a href="'.Url::to(['cart/view']).'" class="btn btn-success">Оформить заказ</a>
+        <button type="button" class="btn btn-danger" onclick="clearCart()">Очистить корзину</button>',
+]);
+
+Modal::end();
+?><!--/Modal cart-->
 <?php $this->endBody() ?>
 </body>
 </html>

@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\modules\admin\models\Product */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index'], 'class' => 'breadcrumb'];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <?php if (Yii::$app->session->hasFlash('success')) : ?>

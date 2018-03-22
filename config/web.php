@@ -54,7 +54,7 @@ $config = [
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
-            'useFileTransport' => false,
+            'useFileTransport' => true,
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'smtp.gmail.com',
@@ -79,11 +79,16 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-
                 'category/<id:\d+>/page/<page:\d+>' => 'category/view',
                 'category/<id:\d+>' => 'category/view',
                 'search' => 'category/search',
                 'product/<id:\d+>' => 'product/view',
+//                '<module:[\w-]+>/<controller:[\w-]+>/<action:[\w-]+>/<id:\d+>' => '<module>/<controller>/<action>',
+//                '<module:[\w-]+>/<controller:[\w-]+>/<id:\d+>' => '<module>/<controller>/view',
+//                '<module:[\w-]+>/<controller:[\w-]+>' => '<module>/<controller>/index',
+                  'admin/<controller:[\w-]+>' => 'admin/<controller>/index',
+                  'admin/<controller:[\w-]+>/<id:\d+>' => 'admin/<controller>/view',
+                  'admin/<controller:[\w-]+>/<action:[\w-]+>/<id:\d+>' => 'admin/<controller>/<action>',
             ],
         ],
 

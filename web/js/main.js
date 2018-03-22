@@ -105,7 +105,7 @@ $('.del-item').on('click', function () {
 
 function getCart() {
     $.ajax({
-        url: '/cart/show',
+        url: '@web/cart/show',
         type: 'GET',
         success: function(res){
             if (!res) alert('Error->getCart()->Ajax:success');

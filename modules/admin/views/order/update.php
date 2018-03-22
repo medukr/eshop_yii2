@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $model app\modules\admin\models\Order */
 
 $this->title = 'Обновление заказка №' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Orders', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => 'Orders', 'url' => ['index'], 'class' => 'breadcrumb'];
+$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id], 'class' => 'breadcrumb'];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="order-update">

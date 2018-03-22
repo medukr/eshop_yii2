@@ -12,13 +12,13 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
+    <?php // echo $form->field($model, 'created_at')->textInput() ?>
 
-    <?= $form->field($model, 'updated_at')->textInput() ?>
+    <?php // echo $form->field($model, 'updated_at')->textInput() ?>
 
-    <?= $form->field($model, 'qty')->textInput() ?>
+    <?php // echo $form->field($model, 'qty')->textInput() ?>
 
-    <?= $form->field($model, 'sum')->textInput() ?>
+    <?php // echo $form->field($model, 'sum')->textInput() ?>
 
     <?= $form->field($model, 'status')->dropDownList([ '0' => 'Активен', '1' => 'Завершен' ]) ?>
 

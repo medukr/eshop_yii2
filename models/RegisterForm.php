@@ -4,7 +4,7 @@ namespace app\models;
 
 use Yii;
 
-use app\models\User;
+use yii\web\IdentityInterface;
 
 /**
  * This is the model class for table "user".
@@ -104,6 +104,7 @@ class RegisterForm extends \yii\db\ActiveRecord
         $user->email = $this->email;
         $user->name = $this->name;
         $user->phone = $this->phone;
+        $user->isAdmin = 0;
         return $user->save() ? $user : null;
 
 
@@ -115,4 +116,5 @@ class RegisterForm extends \yii\db\ActiveRecord
             $this->addError('secondPassword', 'Повторите пароль');
         }
     }
+
 }

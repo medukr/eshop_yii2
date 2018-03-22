@@ -1,6 +1,10 @@
 <?php
 use yii\helpers\Html;
 use yii\helpers\Url;
+$this->title = $product->name;
+$this->params['breadcrumbs'][] = ['label' => "{$product->category->name}", 'url' => ["category/$product->category_id"], 'class' => 'breadcrumb'];
+
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <section>

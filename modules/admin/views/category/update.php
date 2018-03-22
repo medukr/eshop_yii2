@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $model app\modules\admin\models\Category */
 
 $this->title = 'Update Category: {nameAttribute}';
-$this->params['breadcrumbs'][] = ['label' => 'Categories', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => 'Categories', 'url' => ['index'], 'class' => 'breadcrumb'];
+$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id], 'class' => 'breadcrumb'];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="category-update">

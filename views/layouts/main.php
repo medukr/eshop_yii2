@@ -163,6 +163,14 @@ ltAppAsset::register($this);
                     </div>
                 </div>
             </div>
+            <div class="breadcrumbs">
+                <ol class="breadcrumb">
+                    <?= Breadcrumbs::widget(
+                        [
+                            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                        ]);?>
+                </ol>
+            </div>
         </div>
     </div><!--/header-bottom-->
 </header><!--/header-->

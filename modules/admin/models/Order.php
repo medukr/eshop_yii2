@@ -9,6 +9,7 @@ use app\modules\admin\models\OrderItems;
  * This is the model class for table "order".
  *
  * @property int $id
+ * @property int $user_id
  * @property string $created_at
  * @property string $updated_at
  * @property int $qty

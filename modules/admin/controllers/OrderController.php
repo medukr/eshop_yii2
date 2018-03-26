@@ -2,6 +2,8 @@
 
 namespace app\modules\admin\controllers;
 
+use app\modules\admin\models\OrderItems;
+use app\modules\admin\models\Product;
 use Yii;
 use app\modules\admin\models\Order;
 use yii\data\ActiveDataProvider;
@@ -99,15 +101,14 @@ class OrderController extends AppAdminController
      */
     public function actionUpdate($id)
     {
+
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
-        }
+            }
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        return $this->render('update', compact('model'));
     }
 
     /**
@@ -138,5 +139,108 @@ class OrderController extends AppAdminController
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    protected function findModelItems($id)
+    {
+        if (($modelItems = OrderItems::find()->where(['order_id' => $id])->all()) !== null) {
+            return $modelItems;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+
+    public function actionDeleteOrderItem()
+    {
+        $product_id = Yii::$app->request->get('id');
+        $order_id = Yii::$app->request->get('order_id');
+
+        $item = OrderItems::find()->where(['id' => $product_id, 'order_id' => $order_id])->one();
+        $order = Order::findOne($order_id);
+
+        $order->qty -= $item->qty_item;
+        $order->sum -= $item->sum_item;
+
+        $order->save();
+        $item->delete();
+
+        return $this->redirect('/admin/order/update?id=' . $order_id);
+    }
+
+    public function actionShowOrderItems($id)
+    {
+        $order = $this->findModel($id);
+        $model = $this->findModelItems($id);
+
+        if ($model) {
+            $this->layout = false;
+            return $this->render('orderItems', compact('model', 'order'));
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionQuantityItem($id, $orderId, $action)
+    {
+        $order = $this->findModel($orderId);
+        $orderItem = OrderItems::findOne($id);
+
+        if ($order){
+            if ($orderItem) {
+                if ($action == 'plus') {
+                    $orderItem->qty_item += 1;
+                    $order->qty += 1;
+
+                    $order->sum -=  $orderItem->sum_item;
+                    $orderItem->sum_item = $orderItem->qty_item * $orderItem->price;
+                    $order->sum +=  $orderItem->sum_item;
+
+                    $orderItem->save();
+                } elseif ($action == 'minus') {
+                    $orderItem->qty_item -= 1;
+                    $order->qty -= 1;
+
+                    $order->sum -=  $orderItem->sum_item;
+                    $orderItem->sum_item = $orderItem->qty_item * $orderItem->price;
+                    $order->sum +=  $orderItem->sum_item;
+
+                    $orderItem->save();
+                } elseif ($action == 'delete'){
+                    $order->qty -= $orderItem->qty_item;
+                    $order->sum -=  $orderItem->sum_item;
+
+                    $orderItem->delete();
+                } else {
+                    throw new NotFoundHttpException('The requested page does not exist.');
+                }
+            }
+            $order->save();
+
+            $this->layout = false;
+            $model = $order->orderItems;
+            return $this->render('orderItems', compact('model', 'order'));
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionAddOrderItem($id, $orderId){
+
+        $product = Product::findOne($id);
+        $orderItem = new OrderItems();
+
+        $orderItem->order_id = $orderId;
+        $orderItem->product_id = $product->id;
+        $orderItem->name = $product->name;
+        $orderItem->price = $product->price;
+        $orderItem->qty_item = 0;
+        $orderItem->sum_item = 0;
+        $orderItem->save();
+
+        $order = $this->findModel($orderId);
+        $this->layout = false;
+        $model = $order->orderItems;
+        return $this->render('orderItems', compact('model', 'order'));
     }
 }

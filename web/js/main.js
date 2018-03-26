@@ -60,7 +60,7 @@ $('.add-to-cart').on('click', function (e) {
 		var id = $(this).data('id'),
             qty = $('#qty').val();
 		$.ajax({
-			url: '/cart/add',
+			url: "/cart/add",
 			data: {id:id, qty:qty},
 			type: 'GET',
 			success: function(res){
@@ -105,7 +105,7 @@ $('.del-item').on('click', function () {
 
 function getCart() {
     $.ajax({
-        url: '@web/cart/show',
+        url: "/cart/show",
         type: 'GET',
         success: function(res){
             if (!res) alert('Error->getCart()->Ajax:success');
@@ -117,4 +117,73 @@ function getCart() {
     });
     return false;
 }
+
+
+$('#showOrderItems').on('click', function (e) {
+    e.preventDefault();
+    var id = $(this).data('id');
+    $.ajax({
+        url: "/admin/order/show-order-items",
+        data: {id:id},
+        type: 'GET',
+        success: function(res){
+            if (!res) alert('Error->.add-to-cart->Ajax:success');
+            // showCart(res);
+            $('div.orderItems').html(res);
+
+        },
+        error: function () {
+            alert ('Error->.add-to-cart->Ajax:error');
+        }
+
+    });
+});
+
+$('div.orderItems').on('click', '.item_quantity', function (e) {
+    e.preventDefault();
+    var id = $(this).data('id');
+    var orderId = $(this).data('order');
+    var action = $(this).data('action');
+    if (action === 'delete'){
+        if (!confirm('Вы пытаетесь удалить товар. Это действе необратимо!')){
+            return false;
+        }
+    }
+    $.ajax({
+        url: "/admin/order/quantity-item",
+        data: {id:id, orderId:orderId, action:action},
+        type: 'GET',
+        success: function(res){
+            if (!res) alert('Error->.add-to-cart->Ajax:success');
+            // showCart(res);
+            $('div.orderItems').html(res);
+
+        },
+        error: function () {
+            alert ('Error->.add-to-cart->Ajax:error');
+        }
+
+    });
+});
+
+$('div.orderItems').on('click', '.add_order_item', function (e) {
+    e.preventDefault();
+    var id = $('.id_new_item').val();
+    var orderId = $(this).data('order');
+    $.ajax({
+        url: "/admin/order/add-order-item",
+        data: {id:id, orderId:orderId},
+        type: 'GET',
+        success: function(res){
+            if (!res) alert('Error->.add-to-cart->Ajax:success');
+            // showCart(res);
+            $('div.orderItems').html(res);
+
+        },
+        error: function () {
+            alert ('Error->.add-to-cart->Ajax:error');
+        }
+
+    });
+});
 

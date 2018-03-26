@@ -26,12 +26,6 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         <?php endif; ?>
         <?php if (isset($session['cart'])) : ?>
-        <div class="breadcrumbs">
-            <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active">Shopping Cart</li>
-            </ol>
-        </div>
         <div class="table-responsive cart_info">
             <table class="table table-condensed">
                 <thead>

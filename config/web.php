@@ -86,9 +86,10 @@ $config = [
 //                '<module:[\w-]+>/<controller:[\w-]+>/<action:[\w-]+>/<id:\d+>' => '<module>/<controller>/<action>',
 //                '<module:[\w-]+>/<controller:[\w-]+>/<id:\d+>' => '<module>/<controller>/view',
 //                '<module:[\w-]+>/<controller:[\w-]+>' => '<module>/<controller>/index',
-                  'admin/<controller:[\w-]+>' => 'admin/<controller>/index',
-                  'admin/<controller:[\w-]+>/<id:\d+>' => 'admin/<controller>/view',
-                  'admin/<controller:[\w-]+>/<action:[\w-]+>/<id:\d+>' => 'admin/<controller>/<action>',
+                '<module:[\w-]+>/cart/view' => 'cart/view',
+                'admin/<controller:[\w-]+>' => 'admin/<controller>/index',
+                'admin/<controller:[\w-]+>/<id:\d+>' => 'admin/<controller>/view',
+                'admin/<controller:[\w-]+>/<action:[\w-]+>/<id:\d+>' => 'admin/<controller>/<action>',
             ],
         ],
 

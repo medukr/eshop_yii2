@@ -105,14 +105,14 @@ ltAppAsset::register($this);
                                 <li><a href="<?= Url::to('/admin')?>"><i class="fa fa-user"></i><b><?= Yii::$app->user->identity['username']?></b></a></li>
                                 <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                                 <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                                <li><a href="#" onclick="return getCart()" ><i class="fa fa-shopping-cart " ></i> Cart</a></li>
+                                <li><a href="" onclick="return getCart()" ><i class="fa fa-shopping-cart " ></i> Cart</a></li>
                                 <li><a href="<?= Url::to('/site/logout')?>"><i class="fa fa-lock"></i> Выход</a></li>
 
                             <?php else: ?>
                                 <li><a href="<?= Url::to('/admin')?>"><i class="fa fa-user"></i>Гость</a></li>
                                 <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                                 <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                                <li><a href="#" onclick="return getCart()" ><i class="fa fa-shopping-cart " ></i> Cart</a></li>
+                                <li><a href="" onclick="return getCart()" ><i class="fa fa-shopping-cart " ></i> Cart</a></li>
                                 <li><a href="<?= Url::to('/admin')?>"><i class="fa fa-lock"></i> Login</a></li>
                             <?php endif; ?>
                         </ul>

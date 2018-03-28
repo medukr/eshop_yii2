@@ -211,6 +211,8 @@ class OrderController extends AppAdminController
                     $order->sum -=  $orderItem->sum_item;
 
                     $orderItem->delete();
+                    Yii::$app->session->setFlash('success', 'Товар удален.');
+
                 } else {
                     throw new NotFoundHttpException('The requested page does not exist.');
                 }
@@ -227,16 +229,20 @@ class OrderController extends AppAdminController
 
     public function actionAddOrderItem($id, $orderId){
 
-        $product = Product::findOne($id);
-        $orderItem = new OrderItems();
 
-        $orderItem->order_id = $orderId;
-        $orderItem->product_id = $product->id;
-        $orderItem->name = $product->name;
-        $orderItem->price = $product->price;
-        $orderItem->qty_item = 0;
-        $orderItem->sum_item = 0;
-        $orderItem->save();
+        if ($product = Product::findOne($id)) {
+            $orderItem = new OrderItems();
+            $orderItem->order_id = $orderId;
+            $orderItem->product_id = $product->id;
+            $orderItem->name = $product->name;
+            $orderItem->price = $product->price;
+            $orderItem->qty_item = 0;
+            $orderItem->sum_item = 0;
+            $orderItem->save();
+            Yii::$app->session->setFlash('success', 'Товар добавлен.');
+        } else {
+            Yii::$app->session->setFlash('error', 'Товар не найден.');
+        }
 
         $order = $this->findModel($orderId);
         $this->layout = false;

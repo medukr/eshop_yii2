@@ -15,11 +15,11 @@ use yii\helpers\Html;
         </tr>
         </thead>
         <tbody>
-
         <?php foreach ($model as $id => $item): ?>
+            <?php $mainImage = $item->product->getImage() ?>
             <tr>
                 <td class="cart_product" style="margin-left: 0">
-                    <a href="<?= Url::to(["/product/view", 'id' => $item->product_id])?>"><?= Html::img("@web/images/products/{$item->product->img}", ['alt' => $item->name, 'style' => 'width: 75px'])?></a>
+                    <a href="<?= Url::to(["/product/view", 'id' => $item->product_id])?>"><?= Html::img("{$mainImage->getUrl()}", ['alt' => $item->name, 'style' => 'width: 75px'])?></a>
                 </td>
 
                 <td class="cart_description">
@@ -68,6 +68,25 @@ use yii\helpers\Html;
         </tr>
         </tbody>
     </table>
+
+    <?php if (Yii::$app->session->hasFlash('success')) : ?>
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <strong><?php echo Yii::$app->session->getFlash('success');?></strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endif; ?>
+
+    <?php if (Yii::$app->session->hasFlash('error')) : ?>
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <strong><?php echo Yii::$app->session->getFlash('error');?></strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endif; ?>
+
     <div>
         <h4>Довавить товар</h4>
         <label for="newitem">ID:</label>
